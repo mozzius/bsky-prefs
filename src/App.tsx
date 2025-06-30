@@ -19,7 +19,7 @@ function App() {
 
   return (
     <main>
-      <div className="bg-white border-b px-8 py-4">
+      <div className="bg-white border-b border-gray-300 px-8 py-4">
         <div className="flex justify-between items-center">
           <h1 className="font-black text-2xl">Bluesky Preferences Helper</h1>
           <button

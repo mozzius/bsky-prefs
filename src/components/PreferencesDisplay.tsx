@@ -72,7 +72,7 @@ export default function PreferencesDisplay({
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Bluesky Preferences</h2>
+        <h2 className="text-2xl font-bold">Your Preferences</h2>
         <button
           onClick={exportPreferences}
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -81,7 +81,7 @@ export default function PreferencesDisplay({
         </button>
       </div>
 
-      <div className="bg-gray-50 border rounded-lg overflow-hidden">
+      <div className="bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">
         <pre className="p-4 text-sm overflow-x-auto max-h-96 overflow-y-auto">
           <code>{JSON.stringify(preferences, null, 2)}</code>
         </pre>

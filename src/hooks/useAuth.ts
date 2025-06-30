@@ -14,6 +14,11 @@ export function useAuth() {
         // Initialize the client first - this handles OAuth callbacks
         const result = await client.init();
         setSession(result?.session || null);
+        
+        // If we're on the callback URL and have a session, redirect to home
+        if (result?.session && window.location.pathname === '/oauth/callback') {
+          window.history.replaceState({}, '', '/');
+        }
       } catch (error) {
         console.error(error);
         setSession(null);
