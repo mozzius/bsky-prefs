@@ -21,7 +21,14 @@ function App() {
     <main>
       <div className="bg-white border-b border-gray-300 px-8 py-4">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold text-2xl">Bluesky Preferences Helper</h1>
+          <div className="flex gap-3 items-center">
+            <img
+              src="/bluesky.svg"
+              alt="Bluesky Logo"
+              className="w-6 shrink-0"
+            />
+            <h1 className="font-bold text-2xl">Bluesky Preferences Helper</h1>
+          </div>
           <button
             onClick={signOut}
             className="px-4 py-2 text-sm bg-gray-200 hover:bg-gray-300 rounded-md"
