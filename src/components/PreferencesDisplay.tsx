@@ -82,7 +82,7 @@ export default function PreferencesDisplay({
       </div>
 
       <div className="bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">
-        <pre className="p-4 text-sm overflow-x-auto max-h-96 overflow-y-auto">
+        <pre className="p-4 text-sm overflow-x-auto max-h-[calc(100vh-16rem)] overflow-y-auto">
           <code>{JSON.stringify(preferences, null, 2)}</code>
         </pre>
       </div>
