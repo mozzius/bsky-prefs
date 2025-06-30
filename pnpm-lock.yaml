@@ -28,7 +28,7 @@ importers:
         version: 4.1.11
     devDependencies:
       '@eslint/js':
-        specifier: ^9.29.0
+        specifier: ^9.30.0
         version: 9.30.0
       '@types/react':
         specifier: ^19.1.8
@@ -40,7 +40,7 @@ importers:
         specifier: ^3.10.2
         version: 3.10.2(vite@7.0.0(jiti@2.4.2)(lightningcss@1.30.1))
       eslint:
-        specifier: ^9.29.0
+        specifier: ^9.30.0
         version: 9.30.0(jiti@2.4.2)
       eslint-plugin-react-hooks:
         specifier: ^5.2.0
@@ -58,7 +58,7 @@ importers:
         specifier: ~5.8.3
         version: 5.8.3
       typescript-eslint:
-        specifier: ^8.34.1
+        specifier: ^8.35.0
         version: 8.35.0(eslint@9.30.0(jiti@2.4.2))(typescript@5.8.3)
       vite:
         specifier: ^7.0.0
@@ -343,23 +343,18 @@ packages:
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
 
-  '@jridgewell/gen-mapping@0.3.8':
-    resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
-    engines: {node: '>=6.0.0'}
+  '@jridgewell/gen-mapping@0.3.10':
+    resolution: {integrity: sha512-HM2F4B9N4cA0RH2KQiIZOHAZqtP4xGS4IZ+SFe1SIbO4dyjf9MTY2Bo3vHYnm0hglWfXqBrzUBSa+cJfl3Xvrg==}
 
   '@jridgewell/resolve-uri@3.1.2':
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
     engines: {node: '>=6.0.0'}
 
-  '@jridgewell/set-array@1.2.1':
-    resolution: {integrity: sha512-R8gLRTZeyp03ymzP/6Lil/28tGeGEzhx1q2k703KGWRAI1VdvPIXdG70VJc2pAMw3NA6JKL5hhFu1sJX0Mnn/A==}
-    engines: {node: '>=6.0.0'}
+  '@jridgewell/sourcemap-codec@1.5.2':
+    resolution: {integrity: sha512-gKYheCylLIedI+CSZoDtGkFV9YEBxRRVcfCH7OfAqh4TyUyRjEE6WVE/aXDXX0p8BIe/QgLcaAoI0220KRRFgg==}
 
-  '@jridgewell/sourcemap-codec@1.5.0':
-    resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
-
-  '@jridgewell/trace-mapping@0.3.25':
-    resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+  '@jridgewell/trace-mapping@0.3.27':
+    resolution: {integrity: sha512-VO95AxtSFMelbg3ouljAYnfvTEwSWVt/2YLf+U5Ejd8iT5mXE2Sa/1LGyvySMne2CGsepGLI7KpF3EzE3Aq9Mg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1343,8 +1338,8 @@ snapshots:
 
   '@ampproject/remapping@2.3.0':
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.8
-      '@jridgewell/trace-mapping': 0.3.25
+      '@jridgewell/gen-mapping': 0.3.10
+      '@jridgewell/trace-mapping': 0.3.27
 
   '@atproto-labs/did-resolver@0.2.0':
     dependencies:
@@ -1604,22 +1599,19 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  '@jridgewell/gen-mapping@0.3.8':
+  '@jridgewell/gen-mapping@0.3.10':
     dependencies:
-      '@jridgewell/set-array': 1.2.1
-      '@jridgewell/sourcemap-codec': 1.5.0
-      '@jridgewell/trace-mapping': 0.3.25
+      '@jridgewell/sourcemap-codec': 1.5.2
+      '@jridgewell/trace-mapping': 0.3.27
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
-  '@jridgewell/set-array@1.2.1': {}
+  '@jridgewell/sourcemap-codec@1.5.2': {}
 
-  '@jridgewell/sourcemap-codec@1.5.0': {}
-
-  '@jridgewell/trace-mapping@0.3.25':
+  '@jridgewell/trace-mapping@0.3.27':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.0
+      '@jridgewell/sourcemap-codec': 1.5.2
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -2275,7 +2267,7 @@ snapshots:
 
   magic-string@0.30.17:
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
+      '@jridgewell/sourcemap-codec': 1.5.2
 
   merge2@1.4.1: {}
 
