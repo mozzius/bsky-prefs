@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Agent, type BskyPreferences } from "@atproto/api";
 import type { OAuthSession } from "@atproto/oauth-client-browser";
+import { TID } from "@atproto/common-web";
 
 interface PreferencesDisplayProps {
   session: OAuthSession;
@@ -12,6 +13,7 @@ export default function PreferencesDisplay({
   const [preferences, setPreferences] = useState<BskyPreferences | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [fixing, setFixing] = useState(false);
 
   useEffect(() => {
     const fetchPreferences = async () => {
@@ -50,6 +52,44 @@ export default function PreferencesDisplay({
     URL.revokeObjectURL(url);
   };
 
+  const hasUuidFeeds = () => {
+    if (!preferences?.savedFeeds) return false;
+    const uuidRegex =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    return preferences.savedFeeds.some((feed) => uuidRegex.test(feed.id));
+  };
+
+  const fixSavedFeeds = async () => {
+    if (!preferences || !preferences.savedFeeds) return;
+
+    setFixing(true);
+    setError(null);
+
+    try {
+      const agent = new Agent(session);
+      const uuidRegex =
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+      const fixedFeeds = preferences.savedFeeds.map((feed) => {
+        if (uuidRegex.test(feed.id)) {
+          return { ...feed, id: TID.nextStr() };
+        }
+        return feed;
+      });
+
+      await agent.overwriteSavedFeeds(fixedFeeds);
+
+      const response = await agent.getPreferences();
+      setPreferences(response);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Failed to fix saved feeds",
+      );
+    } finally {
+      setFixing(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -73,12 +113,23 @@ export default function PreferencesDisplay({
     <div className="p-8 max-w-4xl mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Your Preferences</h2>
-        <button
-          onClick={exportPreferences}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Export JSON
-        </button>
+        <div className="flex gap-2">
+          {hasUuidFeeds() && (
+            <button
+              onClick={fixSavedFeeds}
+              disabled={fixing}
+              className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {fixing ? "Fixing..." : "Fix Saved Feeds"}
+            </button>
+          )}
+          <button
+            onClick={exportPreferences}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Export JSON
+          </button>
+        </div>
       </div>
 
       <div className="bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">

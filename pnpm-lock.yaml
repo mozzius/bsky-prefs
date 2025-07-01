@@ -11,6 +11,9 @@ importers:
       '@atproto/api':
         specifier: ^0.15.19
         version: 0.15.19
+      '@atproto/common-web':
+        specifier: ^0.4.2
+        version: 0.4.2
       '@atproto/oauth-client-browser':
         specifier: ^0.3.26
         version: 0.3.26
