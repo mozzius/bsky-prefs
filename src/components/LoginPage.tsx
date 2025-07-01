@@ -22,7 +22,9 @@ export default function LoginPage() {
 
     setIsLoading(true);
     try {
-      await client.signIn(handle.trim());
+      await client.signIn(
+        handle.includes(".") ? handle.trim() : `${handle.trim()}.bsky.social`,
+      );
     } catch (error) {
       console.error("Login failed:", error);
     } finally {
